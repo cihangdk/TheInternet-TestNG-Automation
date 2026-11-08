@@ -6,6 +6,7 @@ import org.testng.annotations.Test;
 import pages.TheInternetPage;
 import utilities.Driver;
 import org.openqa.selenium.support.ui.Select;
+import org.openqa.selenium.Keys;
 
 import java.awt.*;
 import java.awt.event.KeyEvent;
@@ -243,6 +244,48 @@ public class C02_OrnekProje2 {
 
         // Dropdown'daki tüm seçeneklerin sayısının 3 olduğunu doğruluyoruz
         Assert.assertEquals(select.getOptions().size(), 3);
+    }
+
+    /*
+     * TEST 08: Inputs
+     * Sayı kutusuna değer yazıp ok tuşlarıyla artırıp azaltıyoruz,
+     * ardından kutunun harf kabul etmediğini kontrol ediyoruz.
+     * Beklenen: Değer her işlemden sonra doğru değişmeli,
+     * harf gönderildiğinde kutu boş kalmalı.
+     */
+    @Test
+    public void test08_Inputs() {
+
+        // Inputs sayfasına gidiyoruz
+        Driver.getdriver().get("https://the-internet.herokuapp.com/inputs");
+
+        // Page sınıfından nesne oluşturup elementlere erişiyoruz
+        TheInternetPage theInternetPage = new TheInternetPage();
+
+        // Sayı kutusuna 5 yazıyoruz
+        theInternetPage.numberInput.sendKeys("5");
+
+        // Kutudaki değerin 5 olduğunu doğruluyoruz
+        Assert.assertEquals(theInternetPage.numberInput.getAttribute("value"), "5");
+
+        // Yukarı ok tuşuna basarak değeri 1 artırıyoruz
+        theInternetPage.numberInput.sendKeys(Keys.ARROW_UP);
+
+        // Değerin 6 olduğunu doğruluyoruz
+        Assert.assertEquals(theInternetPage.numberInput.getAttribute("value"), "6");
+
+        // Aşağı ok tuşuna iki kez basarak değeri 2 azaltıyoruz
+        theInternetPage.numberInput.sendKeys(Keys.ARROW_DOWN, Keys.ARROW_DOWN);
+
+        // Değerin 4 olduğunu doğruluyoruz
+        Assert.assertEquals(theInternetPage.numberInput.getAttribute("value"), "4");
+
+        // Kutuyu temizleyip harf göndermeyi deniyoruz
+        theInternetPage.numberInput.clear();
+        theInternetPage.numberInput.sendKeys("abc");
+
+        // Kutu harf kabul etmediği için değer boş kalmalı
+        Assert.assertEquals(theInternetPage.numberInput.getAttribute("value"), "");
     }
 
     // Her testten sonra çalışır, tarayıcıyı kapatır ki bir sonraki test temiz tarayıcıyla başlasın

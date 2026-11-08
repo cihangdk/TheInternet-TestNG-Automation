@@ -51,4 +51,11 @@ public class TheInternetPage {
     // Dropdown sayfasındaki açılır menü (<select> etiketi)
     @FindBy(id = "dropdown")
     public WebElement dropdown;
+
+    //------------BURDAN SONRA INPUTS SAYFASININ LOCATELERİ---------------------
+
+    // Inputs sayfasındaki sadece sayı kabul eden giriş kutusu (<input type="number">)
+    @FindBy(css = "input[type='number']")
+    public WebElement numberInput;
+
 }
