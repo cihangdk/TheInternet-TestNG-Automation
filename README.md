@@ -64,15 +64,3 @@ mvn test -Dtest=C02_OrnekProje2
 - Başarılı login testlerinde Chrome'un "şifreyi kaydet" uyarısı `Robot` sınıfıyla Enter tuşuna basılarak kapatılır. Bu yüzden testler çalışırken Chrome penceresi ön planda olmalı ve headless modda çalıştırılmamalıdır.
 - Testler canlı bir demo sitede çalıştığı için site erişilemez olduğunda testler başarısız olabilir.
 
-## Yol Haritası
-
-Proje adım adım geliştirilmeye devam ediyor. Sıradaki senaryolar:
-
-- [ ] Dynamic Loading: `WebDriverWait` ile explicit wait
-- [ ] Dynamic Controls: element ekleme/kaldırma, enable/disable
-- [ ] JavaScript Alerts: alert, confirm, prompt
-- [ ] Frames / iFrame: `switchTo().frame()`
-- [ ] Multiple Windows: pencereler arası geçiş
-- [ ] Hovers ve Context Menu: `Actions` sınıfı
-- [ ] File Upload
-- [ ] Sortable Data Tables: tablo okuma ve doğrulama
